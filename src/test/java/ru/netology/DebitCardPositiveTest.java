@@ -1,17 +1,16 @@
 package ru.netology;
 
-        import io.github.bonigarcia.wdm.WebDriverManager;
-        import org.junit.jupiter.api.AfterEach;
-        import org.junit.jupiter.api.BeforeAll;
-        import org.junit.jupiter.api.BeforeEach;
-        import org.junit.jupiter.api.Test;
-        import org.openqa.selenium.By;
-        import org.openqa.selenium.WebDriver;
-        import org.openqa.selenium.WebElement;
-        import org.openqa.selenium.chrome.ChromeDriver;
-        import org.openqa.selenium.chrome.ChromeOptions;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
-        import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DebitCardPositiveTest {
     private WebDriver driver;
@@ -29,6 +28,7 @@ public class DebitCardPositiveTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999");
     }
 
     @AfterEach
@@ -39,8 +39,6 @@ public class DebitCardPositiveTest {
 
     @Test
     void TestAllInput() {
-        driver.get("http://localhost:9999/");
-        WebElement form = driver.findElement(By.cssSelector("[class] form"));
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Коваль Алиса");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79990000000");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
